@@ -1,0 +1,94 @@
+---
+import ProjectCard from '../ui/ProjectCard.astro';
+---
+
+<section id="proyectos" class="section-padding animate-on-scroll">
+  <div class="container mx-auto px-6">
+    <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">
+      Proyectos
+    </h2>
+    
+    <!-- Proyectos Front-end -->
+    <div id="proyectos-frontend" class="mb-20">
+      <h3 class="text-3xl font-semibold mb-10 text-center text-blue-400">
+        Proyectos Front-end
+      </h3>
+      
+      <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
+        <ProjectCard 
+          title="Pomodoro App"
+          description="Aplicación de productividad con temporizador Pomodoro"
+          image="/placeholder.svg?height=200&width=300"
+          technologies={['React', 'Tailwind', 'Framer Motion']}
+          liveUrl="#"
+          codeUrl="#"
+        />
+        
+        <ProjectCard 
+          title="FLISoL Web"
+          description="Sitio web para evento de software libre con 3D"
+          image="/placeholder.svg?height=200&width=300"
+          technologies={['Next.js', 'React Three Fiber']}
+          liveUrl="#"
+          codeUrl="#"
+        />
+        
+        <ProjectCard 
+          title="Landing 3D"
+          description="Landing page interactiva con elementos 3D"
+          image="/placeholder.svg?height=200&width=300"
+          technologies={['R3F', 'Drei', 'GSAP']}
+          liveUrl="#"
+          codeUrl="#"
+        />
+      </div>
+    </div>
+    
+    <!-- Experiencias Inmersivas -->
+    <div id="proyectos-inmersivos">
+      <h3 class="text-3xl font-semibold mb-10 text-center text-purple-400">
+        Experiencias Inmersivas
+      </h3>
+      
+      <div class="immersive-projects grid md:grid-cols-2 gap-8 stagger-container">
+        <ProjectCard 
+          title="LeerElCielo (VR)"
+          description="Experiencia VR para Mediamorfosis 2024"
+          image="/placeholder.svg?height=200&width=300"
+          technologies={['Unity', 'XR Toolkit']}
+          isImmersive={true}
+        />
+        
+        <ProjectCard 
+          title="Museo Origen de la Vida"
+          description="Instalación VR en Sucre con Unreal Engine"
+          image="/placeholder.svg?height=200&width=300"
+          technologies={['Unreal Engine', 'VR']}
+          isImmersive={true}
+        />
+        
+        <ProjectCard 
+          title="Billete Bolivia (AR)"
+          description="AR para Bienal Arte Urbano"
+          image="/placeholder.svg?height=200&width=300"
+          technologies={['Vuforia', 'Unity']}
+          isImmersive={true}
+        />
+        
+        <ProjectCard 
+          title="MindAR Interactive Demo"
+          description="Demo interactivo con MindAR.js"
+          image="/placeholder.svg?height=200&width=300"
+          technologies={['MindAR.js', 'React']}
+          isImmersive={true}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    perspective: 1000px;
+  }
+</style>

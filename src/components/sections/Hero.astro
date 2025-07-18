@@ -1,0 +1,85 @@
+---
+import Button from '../ui/Button.astro';
+import FloatingParticles from '../effects/FloatingParticles.astro';
+---
+
+<section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+  <FloatingParticles />
+  
+  <div class="hero-content text-center z-10 animate-on-scroll">
+    <div class="morphing-shape absolute top-20 right-20 opacity-30"></div>
+    
+    <h1 class="hero-title text-6xl md:text-8xl font-bold mb-6 gradient-text glitch" data-text="Tu Nombre">
+      Tu Nombre
+    </h1>
+    
+    <p class="hero-subtitle text-xl md:text-2xl mb-8 text-gray-300 animate-typewriter">
+      Full-stack & Experiencias Inmersivas
+    </p>
+    
+    <div class="hero-buttons flex flex-col md:flex-row gap-6 justify-center items-center stagger-container">
+      <Button href="#proyectos-frontend" variant="primary" class="hover-lift">
+        Proyectos Front-end
+      </Button>
+      <Button href="#proyectos-inmersivos" variant="secondary" class="hover-lift">
+        Experiencias Inmersivas
+      </Button>
+    </div>
+  </div>
+
+  <div class="hero-scroll-indicator absolute bottom-10 left-1/2 transform -translate-x-1/2">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  }
+
+  .hero-title {
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  }
+
+  .animate-typewriter {
+    overflow: hidden;
+    border-right: 3px solid #00d4ff;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40) 1s forwards, blink 1s infinite;
+    width: 0;
+  }
+
+  @keyframes typewriter {
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    0%, 50% { border-color: #00d4ff; }
+    51%, 100% { border-color: transparent; }
+  }
+
+  .scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: #00d4ff;
+    position: relative;
+    animation: scrollBounce 2s infinite;
+  }
+
+  .scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: -3px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #00d4ff;
+    border-bottom: 2px solid #00d4ff;
+    transform: rotate(45deg);
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(10px); opacity: 0.5; }
+  }
+</style>
