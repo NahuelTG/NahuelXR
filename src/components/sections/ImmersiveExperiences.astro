@@ -1,4 +1,5 @@
 ---
+// src/pages/... (o donde esté ubicado el archivo)
 import ProjectCard from "../ui/ProjectCard.astro";
 ---
 
@@ -11,8 +12,9 @@ import ProjectCard from "../ui/ProjectCard.astro";
          web modernas.
       </p>
 
+      <!-- 🔧 CORREGIDO: VR y AR dentro de immersive-grid -->
       <div class="immersive-grid grid md:grid-cols-2 gap-8 stagger-container">
-         <!-- Proyectos VR -->
+         <!-- VR Section -->
          <div class="vr-section">
             <h3 class="text-2xl font-semibold mb-6 text-center text-purple-400 flex items-center justify-center gap-2">
                <span class="vr-icon">🥽</span>
@@ -49,106 +51,105 @@ import ProjectCard from "../ui/ProjectCard.astro";
                   isImmersive={true}
                   category="Narrativo"
                />
+               <ProjectCard
+                  title="Museo Origen de la Vida"
+                  description="Instalación VR permanente en Sucre desarrollada con Unreal Engine. Experiencia educativa sobre evolución y origen de la vida con interacciones realistas."
+                  image="/placeholder.svg?height=200&width=300"
+                  technologies={["Unreal Engine", "Blueprint", "VR Optimization", "Meta Quest"]}
+                  isImmersive={true}
+                  category="Museo"
+                  location="Sucre, Bolivia"
+               />
+
+               <ProjectCard
+                  title="Training Simulator VR"
+                  description="Simulador de entrenamiento en VR para procedimientos industriales, con sistema de evaluación y seguimiento de progreso."
+                  image="/placeholder.svg?height=200&width=300"
+                  technologies={["Unity", "Photon Networking", "Hand Tracking", "Analytics"]}
+                  isImmersive={true}
+                  category="Entrenamiento"
+               />
             </div>
+         </div>
 
-            <ProjectCard
-               title="Museo Origen de la Vida"
-               description="Instalación VR permanente en Sucre desarrollada con Unreal Engine. Experiencia educativa sobre evolución y origen de la vida con interacciones realistas."
-               image="/placeholder.svg?height=200&width=300"
-               technologies={["Unreal Engine", "Blueprint", "VR Optimization", "Meta Quest"]}
-               isImmersive={true}
-               category="Museo"
-               location="Sucre, Bolivia"
-            />
+         <!-- AR Section -->
+         <div class="ar-section">
+            <h3 class="text-2xl font-semibold mb-6 text-center text-blue-400 flex items-center justify-center gap-2">
+               <span class="ar-icon">📱</span>
+               Realidad Aumentada (AR)
+            </h3>
 
-            <ProjectCard
-               title="Training Simulator VR"
-               description="Simulador de entrenamiento en VR para procedimientos industriales, con sistema de evaluación y seguimiento de progreso."
-               image="/placeholder.svg?height=200&width=300"
-               technologies={["Unity", "Photon Networking", "Hand Tracking", "Analytics"]}
-               isImmersive={true}
-               category="Entrenamiento"
-            />
+            <div class="grid gap-6">
+               <ProjectCard
+                  title="Billete Bolivia (AR)"
+                  description="Experiencia de realidad aumentada exhibida en la Bienal de Arte Urbano 2022. Aplicación que permite escanear billetes bolivianos para revelar contenido interactivo y artístico."
+                  image="/placeholder.svg?height=200&width=300"
+                  technologies={["Unity", "Vuforia", "Image Tracking", "Android/iOS"]}
+                  isImmersive={true}
+                  category="Arte"
+                  event="Bienal Arte Urbano 2022"
+               />
+
+               <ProjectCard
+                  title="Summergo App (AR)"
+                  description="Aplicación móvil de realidad aumentada basada en marcadores y entorno para Android, proporcionando experiencias educativas altamente atractivas."
+                  image="/placeholder.svg?height=200&width=300"
+                  technologies={["Unity", "Vuforia", "AR Foundation", "Android"]}
+                  isImmersive={true}
+                  category="Educativo"
+               />
+
+               <ProjectCard
+                  title="PlanetARium (AR)"
+                  description="Aplicación AR educativa que utiliza disparadores del mundo real y modelos 3D para ofrecer experiencias de aprendizaje inmersivas sobre astronomía y ciencias."
+                  image="/placeholder.svg?height=200&width=300"
+                  technologies={["Unity", "AR Foundation", "3D Models", "Educational"]}
+                  isImmersive={true}
+                  category="Educativo"
+               />
+            </div>
          </div>
       </div>
 
-      <!-- Proyectos AR -->
-      <div class="ar-section">
-         <h3 class="text-2xl font-semibold mb-6 text-center text-blue-400 flex items-center justify-center gap-2">
-            <span class="ar-icon">📱</span>
-            Realidad Aumentada (AR)
+      <!-- Web3D Section -->
+      <div class="web3d-section mt-16">
+         <h3 class="text-2xl font-semibold mb-8 text-center text-cyan-400 flex items-center justify-center gap-2">
+            <span class="web3d-icon">🌐</span>
+            Experiencias Web 3D
          </h3>
 
-         <div class="grid gap-6">
+         <div class="grid md:grid-cols-3 gap-6 stagger-container">
             <ProjectCard
-               title="Billete Bolivia (AR)"
-               description="Experiencia de realidad aumentada exhibida en la Bienal de Arte Urbano 2022. Aplicación que permite escanear billetes bolivianos para revelar contenido interactivo y artístico."
+               title="SummergoLab 3D Landing"
+               description="Página de aterrizaje interactiva para SummergoLab usando React Three Fiber y Drei, creando un espacio visualmente inmersivo para mostrar productos de la empresa."
                image="/placeholder.svg?height=200&width=300"
-               technologies={["Unity", "Vuforia", "Image Tracking", "Android/iOS"]}
+               technologies={["React Three Fiber", "Drei", "Three.js", "React"]}
+               liveUrl="#"
+               category="Corporativo"
                isImmersive={true}
-               category="Arte"
-               event="Bienal Arte Urbano 2022"
             />
 
             <ProjectCard
-               title="Summergo App (AR)"
-               description="Aplicación móvil de realidad aumentada basada en marcadores y entorno para Android, proporcionando experiencias educativas altamente atractivas."
+               title="MindAR Web Experience"
+               description="Demo interactivo de AR web usando MindAR.js que reconoce imágenes específicas y renderiza modelos 3D correspondientes en tiempo real."
                image="/placeholder.svg?height=200&width=300"
-               technologies={["Unity", "Vuforia", "AR Foundation", "Android"]}
+               technologies={["MindAR.js", "React", "Vite", "WebAR"]}
+               liveUrl="https://midaar.netlify.app/"
+               codeUrl="#"
+               category="WebAR"
                isImmersive={true}
-               category="Educativo"
             />
 
             <ProjectCard
-               title="PlanetARium (AR)"
-               description="Aplicación AR educativa que utiliza disparadores del mundo real y modelos 3D para ofrecer experiencias de aprendizaje inmersivas sobre astronomía y ciencias."
+               title="Experiencias Web 3D Interactivas"
+               description="Desarrollo de múltiples experiencias web 3D inmersivas usando Three.js y React para mejorar la participación del usuario y la percepción de marca."
                image="/placeholder.svg?height=200&width=300"
-               technologies={["Unity", "AR Foundation", "3D Models", "Educational"]}
+               technologies={["Three.js", "WebGL", "React", "GLSL Shaders"]}
+               liveUrl="#"
+               category="Web 3D"
                isImmersive={true}
-               category="Educativo"
             />
          </div>
-      </div>
-   </div>
-
-   <!-- Proyectos Web 3D -->
-   <div class="web3d-section mt-16">
-      <h3 class="text-2xl font-semibold mb-8 text-center text-cyan-400 flex items-center justify-center gap-2">
-         <span class="web3d-icon">🌐</span>
-         Experiencias Web 3D
-      </h3>
-
-      <div class="grid md:grid-cols-3 gap-6 stagger-container">
-         <ProjectCard
-            title="SummergoLab 3D Landing"
-            description="Página de aterrizaje interactiva para SummergoLab usando React Three Fiber y Drei, creando un espacio visualmente inmersivo para mostrar productos de la empresa."
-            image="/placeholder.svg?height=200&width=300"
-            technologies={["React Three Fiber", "Drei", "Three.js", "React"]}
-            liveUrl="#"
-            category="Corporativo"
-            isImmersive={true}
-         />
-
-         <ProjectCard
-            title="MindAR Web Experience"
-            description="Demo interactivo de AR web usando MindAR.js que reconoce imágenes específicas y renderiza modelos 3D correspondientes en tiempo real."
-            image="/placeholder.svg?height=200&width=300"
-            technologies={["MindAR.js", "React", "Vite", "WebAR"]}
-            liveUrl="https://midaar.netlify.app/"
-            codeUrl="#"
-            category="WebAR"
-            isImmersive={true}
-         />
-
-         <ProjectCard
-            title="Experiencias Web 3D Interactivas"
-            description="Desarrollo de múltiples experiencias web 3D inmersivas usando Three.js y React para mejorar la participación del usuario y la percepción de marca."
-            image="/placeholder.svg?height=200&width=300"
-            technologies={["Three.js", "WebGL", "React", "GLSL Shaders"]}
-            liveUrl="#"
-            category="Web 3D"
-            isImmersive={true}
-         />
       </div>
    </div>
 </section>
