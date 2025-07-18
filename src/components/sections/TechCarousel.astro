@@ -1,0 +1,171 @@
+---
+
+---
+
+<section id="tecnologias" class="section-padding bg-gradient-to-b from-transparent to-gray-900/10 animate-on-scroll">
+   <div class="container mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">Tecnologías Principales</h2>
+
+      <div class="tech-carousel-container overflow-hidden relative">
+         <!-- Carrusel infinito -->
+         <div class="tech-carousel flex items-center gap-8 animate-scroll">
+            <!-- Primera ronda de tecnologías -->
+            <div class="tech-item">
+               <img src="/src/assets/icons/react.svg" alt="React" class="tech-icon" />
+               <span class="tech-name">React</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/nextjs.svg" alt="Next.js" class="tech-icon" />
+               <span class="tech-name">Next.js</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/astro.svg" alt="Astro" class="tech-icon" />
+               <span class="tech-name">Astro</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/threejs.svg" alt="Three.js" class="tech-icon" />
+               <span class="tech-name">Three.js</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/unity.svg" alt="Unity" class="tech-icon" />
+               <span class="tech-name">Unity</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/unreal.svg" alt="Unreal Engine" class="tech-icon" />
+               <span class="tech-name">Unreal Engine</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/tailwind.svg" alt="Tailwind CSS" class="tech-icon" />
+               <span class="tech-name">Tailwind CSS</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/vite.svg" alt="Vite" class="tech-icon" />
+               <span class="tech-name">Vite</span>
+            </div>
+
+            <!-- Segunda ronda (duplicado para efecto infinito) -->
+            <div class="tech-item">
+               <img src="/src/assets/icons/react.svg" alt="React" class="tech-icon" />
+               <span class="tech-name">React</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/nextjs.svg" alt="Next.js" class="tech-icon" />
+               <span class="tech-name">Next.js</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/astro.svg" alt="Astro" class="tech-icon" />
+               <span class="tech-name">Astro</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/threejs.svg" alt="Three.js" class="tech-icon" />
+               <span class="tech-name">Three.js</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/unity.svg" alt="Unity" class="tech-icon" />
+               <span class="tech-name">Unity</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/unreal.svg" alt="Unreal Engine" class="tech-icon" />
+               <span class="tech-name">Unreal Engine</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/tailwind.svg" alt="Tailwind CSS" class="tech-icon" />
+               <span class="tech-name">Tailwind CSS</span>
+            </div>
+            <div class="tech-item">
+               <img src="/src/assets/icons/vite.svg" alt="Vite" class="tech-icon" />
+               <span class="tech-name">Vite</span>
+            </div>
+         </div>
+      </div>
+
+      <!-- Gradientes de desvanecimiento -->
+      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none z-10"></div>
+   </div>
+</section>
+
+<style>
+   .tech-carousel-container {
+      position: relative;
+      margin: 0 auto;
+      max-width: 100%;
+   }
+
+   .tech-carousel {
+      animation: scroll-infinite 30s linear infinite;
+      width: fit-content;
+   }
+
+   .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      min-width: 120px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+   }
+
+   .tech-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      background: rgba(0, 212, 255, 0.1);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+   }
+
+   .tech-icon {
+      width: 48px;
+      height: 48px;
+      filter: drop-shadow(0 4px 8px rgba(0, 212, 255, 0.3));
+      transition: all 0.3s ease;
+   }
+
+   .tech-item:hover .tech-icon {
+      filter: drop-shadow(0 8px 16px rgba(0, 212, 255, 0.5));
+      transform: rotate(5deg) scale(1.1);
+   }
+
+   .tech-name {
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-align: center;
+      white-space: nowrap;
+   }
+
+   @keyframes scroll-infinite {
+      0% {
+         transform: translateX(0);
+      }
+      100% {
+         transform: translateX(-50%);
+      }
+   }
+
+   /* Pausar animación al hover */
+   .tech-carousel-container:hover .tech-carousel {
+      animation-play-state: paused;
+   }
+
+   /* Responsive */
+   @media (max-width: 768px) {
+      .tech-item {
+         min-width: 100px;
+         padding: 1rem;
+      }
+
+      .tech-icon {
+         width: 40px;
+         height: 40px;
+      }
+
+      .tech-name {
+         font-size: 0.75rem;
+      }
+   }
+</style>

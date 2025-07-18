@@ -1,22 +1,50 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/sections/Hero.astro';
-import About from '../components/sections/About.astro';
-import Skills from '../components/sections/Skills.astro';
-import Projects from '../components/sections/Projects.astro';
-import Experience from '../components/sections/Experience.astro';
-import Education from '../components/sections/Education.astro';
-import Community from '../components/sections/Community.astro';
-import Contact from '../components/sections/Contact.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
+import TechCarousel from "../components/sections/TechCarousel.astro";
+import FrontendProjects from "../components/sections/FrontendProjects.astro";
+import PersonalProjects from "../components/sections/PersonalProjects.astro";
+import ImmersiveExperiences from "../components/sections/ImmersiveExperiences.astro";
+import FrontendContributions from "../components/sections/FrontendContributions.astro";
+import ProfessionalExperience from "../components/sections/ProfessionalExperience.astro";
+import ProjectManagementTools from "../components/sections/ProjectManagementTools.astro";
+import Education from "../components/sections/Education.astro";
+import Community from "../components/sections/Community.astro";
+import Contact from "../components/sections/Contact.astro";
 ---
 
-<Layout title="Mi Portafolio - Full-stack & Experiencias Inmersivas">
-  <Hero />
-  <About />
-  <Skills />
-  <Projects />
-  <Experience />
-  <Education />
-  <Community />
-  <Contact />
+<Layout title="Nahuel Torrez Guzman - Desarrollador Full-stack & Experiencias Inmersivas">
+   <Hero />
+   <About />
+
+   <!-- Carrusel de Tecnologías Principales -->
+   <TechCarousel />
+
+   <!-- Proyectos Frontend Profesionales -->
+   <FrontendProjects />
+
+   <!-- Proyectos Personales Frontend -->
+   <PersonalProjects />
+
+   <!-- Experiencias Inmersivas -->
+   <ImmersiveExperiences />
+
+   <!-- Contribuciones Frontend -->
+   <FrontendContributions />
+
+   <!-- Experiencia Profesional -->
+   <ProfessionalExperience />
+
+   <!-- Herramientas de Gestión -->
+   <ProjectManagementTools />
+
+   <!-- Educación -->
+   <Education />
+
+   <!-- Comunidad -->
+   <Community />
+
+   <!-- Contacto -->
+   <Contact />
 </Layout>
