@@ -1,0 +1,54 @@
+---
+// src/components/ui/OptimizedImage.astro
+export interface Props {
+   src: string;
+   alt: string;
+   class?: string;
+   width?: number;
+   height?: number;
+   loading?: "lazy" | "eager";
+}
+
+const { src, alt, class: className = "", width, height, loading = "lazy" } = Astro.props;
+
+function getImagePath(imagePath: string): string {
+   if (imagePath.startsWith("/NahuelXR/") || imagePath.startsWith("http")) {
+      return imagePath;
+   }
+
+   if (imagePath.startsWith("/")) {
+      return `/NahuelXR${imagePath}`;
+   }
+
+   return `/NahuelXR/${imagePath}`;
+}
+
+const optimizedSrc = getImagePath(src);
+---
+
+<img
+   src={optimizedSrc}
+   alt={alt}
+   class={className}
+   width={width}
+   height={height}
+   loading={loading}
+   onerror="this.style.display='none'; console.error('Failed to load image:', this.src);"
+/>
+
+<style>
+   img {
+      transition: opacity 0.3s ease;
+   }
+
+   img[loading="lazy"] {
+      opacity: 0;
+      animation: fadeIn 0.3s ease forwards;
+   }
+
+   @keyframes fadeIn {
+      to {
+         opacity: 1;
+      }
+   }
+</style>

@@ -6,8 +6,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
    integrations: [tailwind()],
    site: "https://NahuelTG.github.io",
-   base: "/NahuelXR",
-
    vite: {
       css: {
          preprocessorOptions: {
@@ -20,8 +18,15 @@ export default defineConfig({
 
    build: {
       assets: "_astro",
+      assetsPrefix: "/NahuelXR",
    },
+
    image: {
       domains: ["github.io"],
+      service: {
+         entrypoint: "astro/assets/services/sharp",
+      },
    },
+
+   trailingSlash: "ignore",
 });
