@@ -1,0 +1,162 @@
+---
+// src/pages/... (o donde esté ubicado el archivo)
+import ProjectCard from "../ui/ProjectCard.astro";
+---
+
+<section id="experiencias-inmersivas" class="section-padding bg-gradient-to-b from-transparent to-purple-900/10 animate-on-scroll">
+   <div class="container mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">Experiencias Inmersivas</h2>
+
+      <p class="text-center text-lg text-gray-300 mb-12 max-w-3xl mx-auto">
+         Proyectos de realidad virtual, realidad aumentada y experiencias 3D inmersivas desarrollados con Unity, Unreal Engine y tecnologías
+         web modernas.
+      </p>
+
+      <!-- 🔧 CORREGIDO: VR y AR dentro de immersive-grid -->
+      <div class="immersive-grid grid md:grid-cols-2 gap-8 stagger-container">
+         <!-- VR Section -->
+         <div class="vr-section">
+            <h3 class="text-2xl font-semibold mb-6 text-center text-purple-400 flex items-center justify-center gap-2">
+               <span class="vr-icon">🥽</span>
+               Realidad Virtual (VR)
+            </h3>
+
+            <div class="grid gap-6">
+               <ProjectCard
+                  title="LeerElCielo (VR)"
+                  description="Experiencia VR seleccionada para la Sala Showcase XR en el Festival Mediamorfosis en Viña del Mar, Chile (2024). Narrativa inmersiva de VR para Meta Quest 2 & 3."
+                  image="/images/leer_el_cielo.webp"
+                  technologies={["Unreal Engine", "Meta XR", "Blender", "VR Storytelling"]}
+                  category="Festival"
+                  event="Mediamorfosis 2024"
+                  location="Viña del Mar, Chile"
+                  videoUrl="https://youtu.be/O5UTM-V1pQ0?si=_sAWyxxcpU8-Lh2n"
+                  isTeam={true}
+                  isImmersive={true}
+               />
+
+               <ProjectCard
+                  title="Museo Origen de la Vida"
+                  description="Instalación museográfica permanente en el Parque Cretácico de Sucre, combinando tours VR guiados con reconstrucción interactiva de fósiles para dar vida a la paleontología."
+                  image="/images/museo.webp"
+                  technologies={["Unreal Engine", "VR Tours", "Interactive Fossils", "Paleontology"]}
+                  isImmersive={true}
+                  category="Museo"
+                  location="Parque Cretácico, Sucre"
+                  isIndividual={true}
+                  videoUrl="https://youtu.be/aVpjR-pIA50?si=19UjgGul70QoPFWY"
+               />
+            </div>
+         </div>
+
+         <!-- AR Section -->
+         <div class="ar-section">
+            <h3 class="text-2xl font-semibold mb-6 text-center text-blue-400 flex items-center justify-center gap-2">
+               <span class="ar-icon">📱</span>
+               Realidad Aumentada (AR)
+            </h3>
+
+            <div class="grid gap-6">
+               <ProjectCard
+                  title="Summergo App (AR)"
+                  description="Aplicación móvil de realidad aumentada basada en marcadores y entorno para Android, proporcionando experiencias educativas y culturales altamente atractivas. Incluye el proyecto 'Billete Bolivia (AR)', una experiencia artística presentada en la Bienal de Arte Urbano 2022 que permite escanear billetes bolivianos para revelar contenido interactivo."
+                  image="/images/billete.webp"
+                  technologies={["Unity", "Vuforia", "AR Foundation", "Android/iOS", "Image Tracking"]}
+                  isImmersive={true}
+                  category="Educativo / Arte"
+                  event="Bienal Arte Urbano 2022"
+                  videoUrl="https://youtu.be/3HJgZIfiDN8?si=ZLIqijxH65TzIQM3"
+                  isIndividual={true}
+               />
+
+               <ProjectCard
+                  title="Mural (AR)"
+                  description="Aplicación AR educativa que utiliza identificación de patrones para motsrar un video frente a un muro artístico"
+                  image="/images/mural.webp"
+                  technologies={["Unity", "AR Foundation", "3D Models", "Educational"]}
+                  isImmersive={true}
+                  category="Educativo"
+                  videoUrl="https://youtu.be/ziVdkfhb0IU?si=4NPf2prmrH6sHvnx"
+                  isIndividual={true}
+               />
+
+               <ProjectCard
+                  title="PlanetARium (AR)"
+                  description="Aplicación AR educativa que utiliza disparadores del mundo real y modelos 3D para ofrecer experiencias de aprendizaje inmersivas sobre astronomía y ciencias."
+                  image="/images/planetario.webp"
+                  technologies={["Unity", "AR Foundation", "3D Models", "Educational"]}
+                  isImmersive={true}
+                  category="Educativo"
+                  isIndividual={true}
+               />
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<style>
+   .immersive-grid {
+      gap: 3rem;
+   }
+
+   .vr-section,
+   .ar-section {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+   }
+
+   .vr-section {
+      border-color: rgba(147, 51, 234, 0.3);
+   }
+
+   .ar-section {
+      border-color: rgba(59, 130, 246, 0.3);
+   }
+
+   .web3d-section {
+      background: rgba(6, 182, 212, 0.05);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+   }
+
+   .vr-icon,
+   .ar-icon,
+   .web3d-icon {
+      font-size: 1.5rem;
+      filter: drop-shadow(0 4px 8px rgba(0, 212, 255, 0.3));
+   }
+
+   .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, #8b5cf6, #a855f7);
+      border-radius: 2px;
+   }
+
+   /* Hover effects específicos para proyectos inmersivos */
+   .vr-section:hover {
+      border-color: rgba(147, 51, 234, 0.5);
+      box-shadow: 0 20px 40px rgba(147, 51, 234, 0.1);
+   }
+
+   .ar-section:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+   }
+
+   .web3d-section:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1);
+   }
+</style>

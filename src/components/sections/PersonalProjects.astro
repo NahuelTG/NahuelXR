@@ -1,0 +1,78 @@
+---
+import ProjectCard from "../ui/ProjectCard.astro";
+---
+
+<section id="proyectos-personales" class="section-padding bg-gradient-to-b from-gray-900/10 to-transparent animate-on-scroll">
+   <div class="container mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">Proyectos Personales</h2>
+
+      <p class="text-center text-lg text-gray-300 mb-12 max-w-3xl mx-auto">
+         Proyectos desarrollados por iniciativa propia para explorar nuevas tecnologías, experimentar con ideas innovadoras y contribuir a
+         la comunidad de desarrollo.
+      </p>
+
+      <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
+         <ProjectCard
+            title="MindAR Interactive Demo"
+            description="Experiencia AR web interactiva usando React, Vite y MindAR.js. Reconoce imágenes específicas y renderiza modelos 3D en tiempo real."
+            image="/images/mindar.webp"
+            technologies={["React", "Vite", "MindAR.js", "WebAR", "3D Models"]}
+            liveUrl="https://midaar.netlify.app/"
+            codeUrl="https://github.com/NahuelTG/MindAR_test"
+            category="AR Web"
+            isPersonal={true}
+         />
+
+         <ProjectCard
+            title="Pomodoro Web App"
+            description="Temporizador Pomodoro minimalista usando Astro, React, HTML y CSS. Interfaz limpia con controles intuitivos y simplicidad visual."
+            image="/images/pomodoro.webp"
+            technologies={["Astro", "React", "HTML5", "CSS3", "Productivity"]}
+            liveUrl="https://pomodorochallenge.netlify.app/"
+            codeUrl="https://github.com/NahuelTG/Pomodoro_challenge"
+            category="Productividad"
+            isPersonal={true}
+         />
+
+         <ProjectCard
+            title="CaleNotion"
+            description="Una herramienta que ayuda a la planificación de tareas que usa la API de Google Calendar"
+            image="/images/calenotion.webp"
+            technologies={["Vite", "React", "Google API", "Shadcn", "PWA"]}
+            liveUrl="https://cale-notion.vercel.app/"
+            codeUrl="https://github.com/NahuelTG/CaleNotion"
+            category="Herramientas"
+            isPersonal={true}
+         />
+
+         <ProjectCard
+            title="Cards Price"
+            description="Maquetación y animación responsive de cards usando solo HTML, CSS y un poco de Javascript"
+            image="/images/cards.webp"
+            technologies={["HTML", "CSS", "JS"]}
+            liveUrl="https://cards-price-scesi.netlify.app/01-price-cards-landing/"
+            codeUrl="https://github.com/NahuelTG/webcito-challenges"
+            category="Animaciones"
+            isPersonal={true}
+         />
+      </div>
+   </div>
+</section>
+
+<style>
+   .projects-grid {
+      perspective: 1000px;
+   }
+
+   .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, #10b981, #059669);
+      border-radius: 2px;
+   }
+</style>

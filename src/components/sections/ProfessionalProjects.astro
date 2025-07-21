@@ -1,0 +1,89 @@
+---
+import ProjectCard from "../ui/ProjectCard.astro";
+---
+
+<section id="proyectos-frontend" class="section-padding animate-on-scroll">
+   <div class="container mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">Proyectos Profesionales</h2>
+
+      <p class="text-center text-lg text-gray-300 mb-12 max-w-3xl mx-auto">
+         Proyectos desarrollados en entornos profesionales, aplicando las mejores prácticas de desarrollo y trabajando en equipos
+         multidisciplinarios.
+      </p>
+
+      <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
+         <ProjectCard
+            title="SummergoLab Landing Page"
+            description="Página interactiva inmersiva para SummergoLab usando React Three Fiber y Drei. Espacio visualmente inmersivo para mostrar productos de la empresa."
+            image="/images/summergo_web.webp"
+            technologies={["React", "Three.js", "React Three Fiber", "Drei"]}
+            liveUrl="https://summergo.net/"
+            category="Corporativo"
+            year="2025"
+            isIndividual={true}
+         />
+         <ProjectCard
+            title="Sistema de Parque UMSS"
+            description="Contribución al desarrollo backend de la Aplicación de gestión de parqueos de autos y motos, para la facultad de tecnología de la UMSS"
+            image="/images/parqueo.webp"
+            technologies={["SpringBoot", "Java", "Mockito", "Render"]}
+            codeUrl="https://github.com/Wimpi18/BackendProyectoParqueo"
+            category="Gestión"
+            year="2025"
+            isTeam={true}
+         />
+
+         <ProjectCard
+            title="PlataformSimulEducation"
+            description="Sistema básico de simulación de aprendizaje con chat colaborativo integrado y funciones de reuniones. Interfaz consistente e interactiva."
+            image="/images/simu_tech.webp"
+            technologies={["React", "Shadcn", "WebRTC", "Socket.io"]}
+            codeUrl="https://github.com/NahuelTG/PlataformSimulEducation"
+            liveUrl="https://simutechacademy.netlify.app/"
+            category="Educación"
+            year="2024"
+            isTeam={true}
+         />
+
+         <ProjectCard
+            title="Plataforma de Gestión - Cocoa"
+            description="Contribución al desarrollo frontend mejorando la aplicación de metodologías ágiles mediante integración con Jira y Slack."
+            image="/images/cocoa.webp"
+            technologies={["React", "Axios", "MUi", "Husky", "Typescript"]}
+            codeUrl="https://github.com/DigitalCocha/Frontend-Evaluacion_de_Proyectos"
+            category="Gestión"
+            year="2024"
+            isTeam={true}
+         />
+
+         <ProjectCard
+            title="Plataforma de Cursos de Programación"
+            description="Contribución al desarrollo frontend de la Plataforma educativa con React implementando componentes UI escalables. Colaboración mediante metodología SCRUM con historias de usuario."
+            image="/images/ruta_programador.webp"
+            technologies={["React", "Axios", "Bootstrap"]}
+            codeUrl="https://github.com/CodeMasterChefs/Frontend-Ruta-Programador"
+            category="Educación"
+            year="2023"
+            isTeam={true}
+         />
+      </div>
+   </div>
+</section>
+
+<style>
+   .projects-grid {
+      perspective: 1000px;
+   }
+
+   .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, #00d4ff, #3b82f6);
+      border-radius: 2px;
+   }
+</style>

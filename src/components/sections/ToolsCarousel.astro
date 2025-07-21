@@ -1,0 +1,168 @@
+---
+
+---
+
+<section id="tecnologias" class="section-padding bg-gradient-to-b from-transparent to-gray-900/10 animate-on-scroll">
+   <div class="container mx-auto">
+      <h2 class="section-title text-4xl font-bold text-center mb-8 gradient-text">Herramientas de Gestión & Productividad</h2>
+
+      <p class="text-center text-lg text-gray-300 mb-16 max-w-4xl mx-auto">
+         Experiencia en gestión de proyectos, equipos y programas utilizando las mejores herramientas del mercado para asegurar entregas
+         exitosas y colaboración efectiva.
+      </p>
+
+      <div class="tool-carousel-container overflow-hidden relative">
+         <!-- Carrusel infinito -->
+         <div class="tool-carousel flex items-center gap-8 animate-scroll h-[250px]">
+            <!-- Primera ronda -->
+            <div class="tool-item">
+               <img src="/src/assets/icons/notion.svg" alt="Notion" class="tool-icon" />
+               <span class="tool-name">Notion</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/jira.svg" alt="Jira" class="tool-icon" />
+               <span class="tool-name">Jira</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/git.svg" alt="Git" class="tool-icon" />
+               <span class="tool-name">Git</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/figma.svg" alt="Figma" class="tool-icon" />
+               <span class="tool-name">Figma</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/slack.svg" alt="Slack" class="tool-icon" />
+               <span class="tool-name">Slack</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/Trello.svg" alt="Trello" class="tool-icon" />
+               <span class="tool-name">Trello</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/miro.svg" alt="Miro" class="tool-icon" />
+               <span class="tool-name">Miro</span>
+            </div>
+
+            <!-- Segunda ronda (duplicado) -->
+            <div class="tool-item">
+               <img src="/src/assets/icons/notion.svg" alt="Notion" class="tool-icon" />
+               <span class="tool-name">Notion</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/jira.svg" alt="Jira" class="tool-icon" />
+               <span class="tool-name">Jira</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/git.svg" alt="Git" class="tool-icon" />
+               <span class="tool-name">Git</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/figma.svg" alt="Figma" class="tool-icon" />
+               <span class="tool-name">Figma</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/slack.svg" alt="Slack" class="tool-icon" />
+               <span class="tool-name">Slack</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/Trello.svg" alt="Trello" class="tool-icon" />
+               <span class="tool-name">Trello</span>
+            </div>
+            <div class="tool-item">
+               <img src="/src/assets/icons/miro.svg" alt="Miro" class="tool-icon" />
+               <span class="tool-name">Miro</span>
+            </div>
+         </div>
+      </div>
+
+      <!-- Gradientes de desvanecimiento -->
+      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none z-10"></div>
+   </div>
+</section>
+
+<style>
+   .tool-carousel-container {
+      position: relative;
+      margin: 0 auto;
+      max-width: 100%;
+   }
+
+   .tool-carousel {
+      animation: scroll-infinite 30s linear infinite;
+      width: fit-content;
+   }
+
+   .tool-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      min-width: 120px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+   }
+
+   .tool-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      background: rgba(0, 212, 255, 0.1);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+   }
+
+   .tool-icon {
+      width: 48px;
+      height: 48px;
+      filter: drop-shadow(0 4px 8px rgba(0, 212, 255, 0.3));
+      transition: all 0.3s ease;
+   }
+
+   .tool-item:hover .tool-icon {
+      filter: drop-shadow(0 8px 16px rgba(0, 212, 255, 0.5));
+      transform: rotate(5deg) scale(1.1);
+   }
+
+   .tool-name {
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-align: center;
+      white-space: nowrap;
+   }
+
+   @keyframes scroll-infinite {
+      0% {
+         transform: translateX(0);
+      }
+      100% {
+         transform: translateX(-50%);
+      }
+   }
+
+   /* Pausar animación al hover */
+   .tool-carousel-container:hover .tool-carousel {
+      animation-play-state: paused;
+   }
+
+   /* Responsive */
+   @media (max-width: 768px) {
+      .tool-item {
+         min-width: 100px;
+         padding: 1rem;
+      }
+
+      .tool-icon {
+         width: 40px;
+         height: 40px;
+      }
+
+      .tool-name {
+         font-size: 0.75rem;
+      }
+   }
+</style>

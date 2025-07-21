@@ -1,90 +1,234 @@
 ---
-import Card from '../ui/Card.astro';
+import Card from "../ui/Card.astro";
 ---
 
 <section id="sobre-mi" class="section-padding animate-on-scroll">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">
-      Sobre Mí
-    </h2>
-    
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="about-content stagger-container">
-        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
-          Soy un desarrollador apasionado por crear experiencias digitales innovadoras, 
-          combinando desarrollo web moderno con tecnologías inmersivas como VR, AR y 3D.
-        </p>
-        
-        <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-          Mi enfoque se centra en construir soluciones que no solo funcionen perfectamente, 
-          sino que también inspiren y sorprendan a los usuarios.
-        </p>
-        
-        <a href="/cv.pdf" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg hover-lift transition-all duration-300">
-          <span>Descargar CV</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-        </a>
+   <div class="container mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">Sobre Mí</h2>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-8">
+         <!-- Imagen de perfil -->
+         <div class="flex justify-center">
+            <div class="about-image relative h-full max-w-[400px] self-start">
+               <Card class="overflow-hidden">
+                  <div class="image-container card-3d">
+                     <div class="card-3d-inner flex justify-center">
+                        <img
+                           src="/images/nahuel-profile.jpg"
+                           alt="Nahuel Torrez Guzman - Foto de perfil"
+                           class="max-w-[400px] max-h-[400px] w-full h-auto object-cover rounded-2xl"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-600/20"></div>
+                     </div>
+                  </div>
+               </Card>
+
+               <!-- Etiquetas flotantes -->
+               <Card class="absolute -top-4 -left-4 p-3 bg-blue-600/10 border-blue-500/30">
+                  <div class="text-sm text-blue-400 font-medium">📍 Cochabamba, Bolivia</div>
+               </Card>
+
+               <Card class="absolute -right-4 p-3 bg-purple-600/10 border-purple-500/30">
+                  <div class="text-sm text-purple-400 font-medium">🎓 Ing. Sistemas</div>
+               </Card>
+            </div>
+         </div>
+         <!-- Texto sobre mí -->
+         <div class="about-content stagger-container">
+            <Card class="p-8 mb-8">
+               <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                  Soy <strong class="text-white">Nahuel Torrez Guzman</strong>, mi pasión radica en crear soluciones digitales innovadoras
+                  que combinan tecnología moderna con experiencias de usuario excepcionales.
+               </p>
+
+               <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                  Trabajo en paralelo en ambas disciplinas: desarrollo frontend con frameworks de JavaScript y arquitecturas escalables, así
+                  como desarrollo de aplicaciones inmersivas usando Unity y Unreal Engine.
+               </p>
+
+               <p class="text-lg text-gray-300 leading-relaxed">
+                  Ingeniería en Sistemas en la Universidad Mayor de San Simón, actualmente
+                  <strong class="text-purple-400">Vicepresidente de SCESI</strong> (Sociedad Científica de Estudiantes de Sistemas e Informática),
+                  donde lidero proyectos académicos y organización de eventos de tecnología.
+               </p>
+            </Card>
+         </div>
       </div>
-      
-      <div class="about-image relative">
-        <div class="image-container card-3d">
-          <div class="card-3d-inner">
-            <img 
-              src="/placeholder.svg?height=400&width=400" 
-              alt="Foto de perfil" 
-              class="rounded-2xl shadow-2xl w-full max-w-sm mx-auto"
-            />
-            <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-600/20 rounded-2xl"></div>
-          </div>
-        </div>
+
+      <!-- Stats personales -->
+      <div class="personal-stats grid grid-cols-2 gap-4 mb-8">
+         <Card class="p-4 text-center bg-blue-600/10 border-blue-600/20">
+            <div class="text-2xl font-bold text-blue-400">2+</div>
+            <div class="text-sm text-gray-300">Años de Experiencia</div>
+         </Card>
+         <Card class="p-4 text-center bg-purple-600/10 border-purple-600/20">
+            <div class="text-2xl font-bold text-purple-400">15+</div>
+            <div class="text-sm text-gray-300">Proyectos Completados</div>
+         </Card>
       </div>
-    </div>
-  </div>
+
+      <Card class="p-6">
+         <div class="about-actions flex flex-col sm:flex-row gap-4">
+            <a
+               href="/CV_Nahuel_Torrez_Guzman.pdf"
+               target="_blank"
+               class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg hover-lift transition-all duration-300 text-white font-medium"
+            >
+               <span>Descargar CV</span>
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     stroke-width="2"
+                     d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  ></path>
+               </svg>
+            </a>
+
+            <a
+               href="#contacto"
+               class="inline-flex items-center justify-center gap-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-6 py-3 rounded-lg transition-all duration-300 font-medium"
+            >
+               <span>Contactar</span>
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     stroke-width="2"
+                     d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  ></path>
+               </svg>
+            </a>
+         </div>
+      </Card>
+
+      <!-- Especialidades -->
+      <div class="specialties-section mt-20">
+         <h3 class="text-2xl font-semibold text-center mb-12 text-white">Mis Especialidades</h3>
+
+         <div class="specialties-grid grid md:grid-cols-3 gap-6 stagger-container">
+            <Card class="p-6 text-center border-blue-600/30 hover-lift">
+               <div class="specialty-icon w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+               </div>
+               <h4 class="text-lg font-semibold text-white mb-2">Desarrollo Frontend</h4>
+               <p class="text-gray-300 text-sm">React, Next.js, TypeScript y arquitecturas escalables</p>
+            </Card>
+
+            <Card class="p-6 text-center border-purple-600/30 hover-lift">
+               <div class="specialty-icon w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                     ></path>
+                  </svg>
+               </div>
+               <h4 class="text-lg font-semibold text-white mb-2">Experiencias VR/AR</h4>
+               <p class="text-gray-300 text-sm">Unity, Unreal Engine y aplicaciones inmersivas</p>
+            </Card>
+
+            <Card class="p-6 text-center border-green-600/30 hover-lift">
+               <div class="specialty-icon w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                     ></path>
+                  </svg>
+               </div>
+               <h4 class="text-lg font-semibold text-white mb-2">Liderazgo</h4>
+               <p class="text-gray-300 text-sm">Gestión de proyectos y equipos multidisciplinarios</p>
+            </Card>
+         </div>
+      </div>
+   </div>
 </section>
 
 <style>
-  .section-padding {
-    padding: 100px 0;
-  }
+   .section-padding {
+      padding: 50px 0;
+   }
 
-  .section-title {
-    position: relative;
-  }
+   .section-title {
+      position: relative;
+   }
 
-  .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, #00d4ff, #ff6b6b);
-    border-radius: 2px;
-  }
+   .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #00d4ff, #ff6b6b);
+      border-radius: 2px;
+   }
 
-  .image-container {
-    position: relative;
-  }
+   .image-container {
+      position: relative;
+   }
 
-  .image-container::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    right: 20px;
-    bottom: 20px;
-    background: linear-gradient(45deg, #00d4ff, #ff6b6b);
-    border-radius: 2rem;
-    z-index: -1;
-    opacity: 0.3;
-    animation: pulse 3s ease-in-out infinite;
-  }
+   .image-container::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: 20px;
+      bottom: 20px;
+      background: linear-gradient(45deg, #00d4ff, #ff6b6b);
+      border-radius: 2rem;
+      z-index: -1;
+      opacity: 0.3;
+      animation: pulse 3s ease-in-out infinite;
+   }
 
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale(1.05); opacity: 0.5; }
-  }
+   @keyframes pulse {
+      0%,
+      100% {
+         transform: scale(1);
+         opacity: 0.3;
+      }
+      50% {
+         transform: scale(1.05);
+         opacity: 0.5;
+      }
+   }
+
+   .specialty-icon {
+      transition: all 0.3s ease;
+   }
+
+   .specialties-grid .card:hover .specialty-icon {
+      transform: scale(1.1) rotate(5deg);
+   }
+
+   /* Responsive design */
+   @media (max-width: 768px) {
+      .personal-stats {
+         grid-template-columns: 1fr;
+         gap: 1rem;
+      }
+
+      .about-actions {
+         flex-direction: column;
+      }
+
+      .about-image .card {
+         position: relative;
+         margin: 1rem 0;
+      }
+
+      .specialties-grid {
+         grid-template-columns: 1fr;
+         gap: 1rem;
+      }
+   }
 </style>

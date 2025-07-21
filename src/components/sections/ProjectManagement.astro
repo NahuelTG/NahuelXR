@@ -1,0 +1,244 @@
+---
+
+---
+
+<section id="herramientas-gestion" class="section-padding bg-gradient from-transparent to-orange-900/10 animate-on-scroll">
+   <div class="container mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-8 gradient-text">Metodologías & Frameworks de Trabajo</h2>
+
+      <!-- Metodologías y Frameworks -->
+      <div class="methodologies-section mt-16">
+         <div class="methodologies-grid grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-container">
+            <div class="methodology-card bg-gray-800/20 backdrop-blur-sm p-6 rounded-xl border border-orange-600/30 hover-lift text-center">
+               <div class="methodology-icon text-4xl mb-4">🏃‍♂️</div>
+               <h4 class="text-lg font-semibold text-white mb-2">Scrum</h4>
+               <p class="text-gray-300 text-sm">Sprints, daily standups, retrospectivas y planning</p>
+            </div>
+
+            <div class="methodology-card bg-gray-800/20 backdrop-blur-sm p-6 rounded-xl border border-orange-600/30 hover-lift text-center">
+               <div class="methodology-icon text-4xl mb-4">🔄</div>
+               <h4 class="text-lg font-semibold text-white mb-2">Kanban</h4>
+               <p class="text-gray-300 text-sm">Flujo continuo, WIP limits y optimización</p>
+            </div>
+
+            <div class="methodology-card bg-gray-800/20 backdrop-blur-sm p-6 rounded-xl border border-orange-600/30 hover-lift text-center">
+               <div class="methodology-icon text-4xl mb-4">📊</div>
+               <h4 class="text-lg font-semibold text-white mb-2">Lean</h4>
+               <p class="text-gray-300 text-sm">Eliminación de desperdicios y mejora continua</p>
+            </div>
+
+            <div class="methodology-card bg-gray-800/20 backdrop-blur-sm p-6 rounded-xl border border-orange-600/30 hover-lift text-center">
+               <div class="methodology-icon text-4xl mb-4">⚡</div>
+               <h4 class="text-lg font-semibold text-white mb-2">Design Thinking</h4>
+               <p class="text-gray-300 text-sm">Enfoque centrado en el usuario y la innovación</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<style>
+   .tools-carousel-container {
+      position: relative;
+      margin: 0 auto;
+      max-width: 100%;
+   }
+
+   .tools-carousel {
+      animation: scroll-infinite-tools 35s linear infinite;
+      width: fit-content;
+   }
+
+   .tool-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 100px;
+      padding: 1.25rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+   }
+
+   .tool-item:hover {
+      transform: translateY(-8px) scale(1.05);
+      background: rgba(249, 115, 22, 0.1);
+      border-color: rgba(249, 115, 22, 0.3);
+      box-shadow: 0 15px 30px rgba(249, 115, 22, 0.2);
+   }
+
+   .tool-icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.3));
+      transition: all 0.3s ease;
+   }
+
+   .tool-item:hover .tool-icon {
+      filter: drop-shadow(0 6px 12px rgba(249, 115, 22, 0.5));
+      transform: rotate(5deg) scale(1.1);
+   }
+
+   .trello-icon,
+   .asana-icon,
+   .miro-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border-radius: 8px;
+      background: rgba(249, 115, 22, 0.1);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      transition: all 0.3s ease;
+   }
+
+   .tool-item:hover .trello-icon,
+   .tool-item:hover .asana-icon,
+   .tool-item:hover .miro-icon {
+      background: rgba(249, 115, 22, 0.2);
+      transform: rotate(5deg) scale(1.1);
+   }
+
+   .tool-name {
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-align: center;
+      white-space: nowrap;
+   }
+
+   @keyframes scroll-infinite-tools {
+      0% {
+         transform: translateX(0);
+      }
+      100% {
+         transform: translateX(-50%);
+      }
+   }
+
+   .tools-carousel-container:hover .tools-carousel {
+      animation-play-state: paused;
+   }
+
+   .competency-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+   }
+
+   .competency-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+      transition: left 0.5s;
+   }
+
+   .competency-card:hover::before {
+      left: 100%;
+   }
+
+   .competency-card:hover {
+      border-color: rgba(249, 115, 22, 0.3);
+      box-shadow: 0 20px 40px rgba(249, 115, 22, 0.1);
+   }
+
+   .competency-icon {
+      transition: all 0.3s ease;
+   }
+
+   .competency-card:hover .competency-icon {
+      transform: scale(1.1) rotate(5deg);
+   }
+
+   .skill-progress {
+      transition: width 2s ease-out;
+      animation: fillSkillBar 2s ease-out 0.5s both;
+      width: 0 !important;
+   }
+
+   @keyframes fillSkillBar {
+      to {
+         width: var(--width) !important;
+      }
+   }
+
+   .methodology-card {
+      transition: all 0.3s ease;
+   }
+
+   .methodology-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(249, 115, 22, 0.5);
+      background: rgba(249, 115, 22, 0.1);
+   }
+
+   .methodology-icon {
+      transition: all 0.3s ease;
+   }
+
+   .methodology-card:hover .methodology-icon {
+      transform: scale(1.2) rotate(10deg);
+   }
+
+   .stat-card {
+      transition: all 0.3s ease;
+   }
+
+   .stat-card:hover {
+      transform: translateY(-5px) scale(1.05);
+   }
+
+   .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, #f97316, #ea580c);
+      border-radius: 2px;
+   }
+
+   /* Responsive */
+   @media (max-width: 768px) {
+      .tool-item {
+         min-width: 80px;
+         padding: 1rem;
+      }
+
+      .tool-icon,
+      .trello-icon,
+      .asana-icon,
+      .miro-icon {
+         width: 32px;
+         height: 32px;
+      }
+
+      .tool-name {
+         font-size: 0.75rem;
+      }
+
+      .competencies-grid {
+         grid-template-columns: 1fr;
+         gap: 1.5rem;
+      }
+
+      .methodologies-grid {
+         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .achievements-stats {
+         grid-template-columns: repeat(2, 1fr);
+      }
+   }
+</style>

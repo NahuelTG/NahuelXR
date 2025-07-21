@@ -1,319 +1,515 @@
 ---
 export interface Props {
-  title: string;
+   title: string;
 }
 
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Portafolio de desarrollador Full-stack especializado en experiencias inmersivas" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>{title}</title>
-  </head>
-  <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    <slot />
-    <script>
-      // Cursor personalizado
-      const cursor = document.querySelector('.cursor');
-      const follower = document.querySelector('.cursor-follower');
-      
-      document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        setTimeout(() => {
-          follower.style.left = e.clientX + 'px';
-          follower.style.top = e.clientY + 'px';
-        }, 100);
-      });
+   <head>
+      <meta charset="UTF-8" />
+      <meta
+         name="description"
+         content="Portafolio de Nahuel Torrez Guzman - Desarrollador Full-stack especializado en experiencias inmersivas AR/VR"
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" type="image/svg+xml" href="/ntg.svg" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      <title>{title}</title>
+   </head>
+   <body>
+      <div class="cursor-dot"></div>
+      <div class="cursor-outline"></div>
+      <slot />
+      <script>
+         // Cursor personalizado mejorado
+         const cursorDot = document.querySelector(".cursor-dot") as HTMLElement;
+         const cursorOutline = document.querySelector(".cursor-outline") as HTMLElement;
 
-      // Scroll suave y animaciones
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
+         if (cursorDot && cursorOutline) {
+            document.addEventListener("mousemove", (e) => {
+               const posX = e.clientX;
+               const posY = e.clientY;
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      }, observerOptions);
+               // Cursor principal (punto)
+               cursorDot.style.left = `${posX}px`;
+               cursorDot.style.top = `${posY}px`;
 
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-      });
-    </script>
-  </body>
+               // Cursor outline (con delay)
+               setTimeout(() => {
+                  cursorOutline.style.left = `${posX}px`;
+                  cursorOutline.style.top = `${posY}px`;
+               }, 100);
+            });
+
+            // Efectos en hover para elementos interactivos
+            const interactiveElements = document.querySelectorAll("a, button, .hover-lift, .project-card, .tech-item, .tool-item");
+
+            interactiveElements.forEach((el) => {
+               el.addEventListener("mouseenter", () => {
+                  cursorDot.style.transform = "translate(-50%, -50%) scale(2)";
+                  cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                  cursorOutline.style.borderColor = "#00d4ff";
+               });
+
+               el.addEventListener("mouseleave", () => {
+                  cursorDot.style.transform = "translate(-50%, -50%) scale(1)";
+                  cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                  cursorOutline.style.borderColor = "rgba(0, 212, 255, 0.5)";
+               });
+            });
+         }
+
+         // Scroll suave y animaciones (código existente)
+         const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+         };
+
+         const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+               if (entry.isIntersecting) {
+                  entry.target.classList.add("animate-in");
+               }
+            });
+         }, observerOptions);
+
+         document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+            observer.observe(el);
+         });
+
+         // NUEVO: Función para scroll suave con animación personalizada
+         function smoothScrollTo(targetId, duration = 1500) {
+            const target = document.querySelector(targetId);
+            if (!target) return;
+
+            const startPosition = window.pageYOffset;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function easeInOutCubic(t) {
+               return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+            }
+
+            function animation(currentTime) {
+               if (startTime === null) startTime = currentTime;
+               const timeElapsed = currentTime - (startTime || 0);
+               const progress = Math.min(timeElapsed / duration, 1);
+
+               const ease = easeInOutCubic(progress);
+               window.scrollTo(0, startPosition + distance * ease);
+
+               if (timeElapsed < duration) {
+                  requestAnimationFrame(animation);
+               }
+            }
+
+            requestAnimationFrame(animation);
+         }
+
+         // NUEVO: Event listeners para los botones del hero
+         document.addEventListener("DOMContentLoaded", function () {
+            const projectButtons = document.querySelectorAll('a[href^="#proyectos"]');
+
+            projectButtons.forEach((button) => {
+               button.addEventListener("click", function (e) {
+                  e.preventDefault();
+                  const targetId = this.getAttribute("href");
+
+                  if (targetId) {
+                     // Efecto visual en el botón
+                     this.style.transform = "scale(0.95)";
+                     setTimeout(() => {
+                        this.style.transform = "";
+                     }, 150);
+
+                     // Scroll suave
+                     smoothScrollTo(targetId, 1500);
+                  }
+               });
+            });
+
+            // Manejar otros enlaces internos
+            const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+            internalLinks.forEach((link) => {
+               link.addEventListener("click", function (e) {
+                  const href = this.getAttribute("href");
+
+                  if (href && !href.startsWith("#proyectos")) {
+                     e.preventDefault();
+                     smoothScrollTo(href, 1200);
+                  }
+               });
+            });
+         });
+      </script>
+   </body>
 </html>
 
 <style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+   }
 
-  html {
-    scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
-  }
+   html {
+      scroll-behavior: smooth;
+      font-family: "Poppins", sans-serif;
+   }
 
-  body {
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-    color: #ffffff;
-    overflow-x: hidden;
-    cursor: none;
-  }
+   body {
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+      cursor: none;
+   }
 
-  /* Cursor personalizado */
-  .cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: #00d4ff;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    transition: transform 0.1s ease;
-  }
+   /* Cursor personalizado mejorado */
+   .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #00d4ff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.2s ease;
+      mix-blend-mode: difference;
+   }
 
-  .cursor-follower {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(0, 212, 255, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.3s ease;
-  }
+   .cursor-outline {
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      border: 2px solid rgba(0, 212, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+   }
 
-  /* Animaciones base */
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
+   /* Ocultar cursor en dispositivos táctiles */
+   @media (hover: none) and (pointer: coarse) {
+      .cursor-dot,
+      .cursor-outline {
+         display: none;
+      }
 
-  .animate-on-scroll.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
+      body {
+         cursor: auto;
+      }
+   }
 
-  /* Efectos de hover globales */
-  .hover-lift {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-  }
-
-  /* Gradientes animados */
-  .gradient-text {
-    background: linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4, #45b7d1);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 4s ease-in-out infinite;
-  }
-
-  @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  /* Partículas flotantes */
-  .floating-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .particle {
-    position: absolute;
-    background: rgba(0, 212, 255, 0.1);
-    border-radius: 50%;
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
-  .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
-  .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; }
-  .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 3s; }
-  .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 4s; }
-  .particle:nth-child(6) { width: 7px; height: 7px; left: 60%; animation-delay: 5s; }
-  .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 0.5s; }
-  .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 1.5s; }
-  .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 2.5s; }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(100vh) rotate(0deg);
+   /* Animaciones base */
+   .animate-on-scroll {
       opacity: 0;
-    }
-    10%, 90% {
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   }
+
+   .animate-on-scroll.animate-in {
       opacity: 1;
-    }
-    50% {
-      transform: translateY(-10vh) rotate(180deg);
-    }
-  }
+      transform: translateY(0);
+   }
 
-  /* Morphing shapes */
-  .morphing-shape {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(45deg, #00d4ff, #ff6b6b);
-    animation: morph 8s ease-in-out infinite;
-  }
+   /* Efectos de hover globales */
+   .hover-lift {
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   }
 
-  @keyframes morph {
-    0%, 100% {
-      border-radius: 50% 50% 50% 50%;
-      transform: rotate(0deg) scale(1);
-    }
-    25% {
-      border-radius: 60% 40% 30% 70%;
-      transform: rotate(90deg) scale(1.1);
-    }
-    50% {
-      border-radius: 30% 60% 70% 40%;
-      transform: rotate(180deg) scale(0.9);
-    }
-    75% {
-      border-radius: 40% 30% 60% 50%;
-      transform: rotate(270deg) scale(1.05);
-    }
-  }
+   .hover-lift:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+   }
 
-  /* Scroll timeline animations (CSS moderno) */
-  @supports (animation-timeline: scroll()) {
-    .scroll-reveal {
-      animation: reveal linear;
-      animation-timeline: scroll();
-      animation-range: entry 0% cover 40%;
-    }
+   /* Gradientes animados */
+   .gradient-text {
+      background: linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4, #45b7d1);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease-in-out infinite;
+   }
 
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(100px) scale(0.8);
+   @keyframes gradientShift {
+      0%,
+      100% {
+         background-position: 0% 50%;
       }
+      50% {
+         background-position: 100% 50%;
+      }
+   }
+
+   /* Partículas flotantes */
+   .floating-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+   }
+
+   .particle {
+      position: absolute;
+      background: rgba(0, 212, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+   }
+
+   .particle:nth-child(1) {
+      width: 4px;
+      height: 4px;
+      left: 10%;
+      animation-delay: 0s;
+   }
+   .particle:nth-child(2) {
+      width: 6px;
+      height: 6px;
+      left: 20%;
+      animation-delay: 1s;
+   }
+   .particle:nth-child(3) {
+      width: 3px;
+      height: 3px;
+      left: 30%;
+      animation-delay: 2s;
+   }
+   .particle:nth-child(4) {
+      width: 5px;
+      height: 5px;
+      left: 40%;
+      animation-delay: 3s;
+   }
+   .particle:nth-child(5) {
+      width: 4px;
+      height: 4px;
+      left: 50%;
+      animation-delay: 4s;
+   }
+   .particle:nth-child(6) {
+      width: 7px;
+      height: 7px;
+      left: 60%;
+      animation-delay: 5s;
+   }
+   .particle:nth-child(7) {
+      width: 3px;
+      height: 3px;
+      left: 70%;
+      animation-delay: 0.5s;
+   }
+   .particle:nth-child(8) {
+      width: 5px;
+      height: 5px;
+      left: 80%;
+      animation-delay: 1.5s;
+   }
+   .particle:nth-child(9) {
+      width: 4px;
+      height: 4px;
+      left: 90%;
+      animation-delay: 2.5s;
+   }
+
+   @keyframes float {
+      0%,
+      100% {
+         transform: translateY(100vh) rotate(0deg);
+         opacity: 0;
+      }
+      10%,
+      90% {
+         opacity: 1;
+      }
+      50% {
+         transform: translateY(-10vh) rotate(180deg);
+      }
+   }
+
+   /* Morphing shapes */
+   .morphing-shape {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(45deg, #00d4ff, #ff6b6b);
+      animation: morph 8s ease-in-out infinite;
+   }
+
+   @keyframes morph {
+      0%,
+      100% {
+         border-radius: 50% 50% 50% 50%;
+         transform: rotate(0deg) scale(1);
+      }
+      25% {
+         border-radius: 60% 40% 30% 70%;
+         transform: rotate(90deg) scale(1.1);
+      }
+      50% {
+         border-radius: 30% 60% 70% 40%;
+         transform: rotate(180deg) scale(0.9);
+      }
+      75% {
+         border-radius: 40% 30% 60% 50%;
+         transform: rotate(270deg) scale(1.05);
+      }
+   }
+
+   /* Stagger effects */
+   .stagger-container > * {
+      animation: slideInStagger 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateX(-50px);
+   }
+
+   .stagger-container > *:nth-child(1) {
+      animation-delay: 0.1s;
+   }
+   .stagger-container > *:nth-child(2) {
+      animation-delay: 0.2s;
+   }
+   .stagger-container > *:nth-child(3) {
+      animation-delay: 0.3s;
+   }
+   .stagger-container > *:nth-child(4) {
+      animation-delay: 0.4s;
+   }
+   .stagger-container > *:nth-child(5) {
+      animation-delay: 0.5s;
+   }
+   .stagger-container > *:nth-child(6) {
+      animation-delay: 0.6s;
+   }
+
+   @keyframes slideInStagger {
       to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+         opacity: 1;
+         transform: translateX(0);
       }
-    }
-  }
+   }
 
-  /* Stagger effects */
-  .stagger-container > * {
-    animation: slideInStagger 0.6s ease-out forwards;
-    opacity: 0;
-    transform: translateX(-50px);
-  }
+   /* 3D transforms */
+   .card-3d {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   }
 
-  .stagger-container > *:nth-child(1) { animation-delay: 0.1s; }
-  .stagger-container > *:nth-child(2) { animation-delay: 0.2s; }
-  .stagger-container > *:nth-child(3) { animation-delay: 0.3s; }
-  .stagger-container > *:nth-child(4) { animation-delay: 0.4s; }
-  .stagger-container > *:nth-child(5) { animation-delay: 0.5s; }
-  .stagger-container > *:nth-child(6) { animation-delay: 0.6s; }
+   .card-3d:hover {
+      transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+   }
 
-  @keyframes slideInStagger {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+   .card-3d-inner {
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+   }
 
-  /* 3D transforms */
-  .card-3d {
-    perspective: 1000px;
-    transform-style: preserve-3d;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
+   .card-3d:hover .card-3d-inner {
+      transform: translateZ(30px);
+   }
 
-  .card-3d:hover {
-    transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
-  }
+   /* Glitch effect */
+   .glitch {
+      position: relative;
+      animation: glitch 2s infinite;
+   }
 
-  .card-3d-inner {
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-  }
+   .glitch::before,
+   .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+   }
 
-  .card-3d:hover .card-3d-inner {
-    transform: translateZ(30px);
-  }
+   .glitch::before {
+      animation: glitch-1 0.5s infinite;
+      color: #00d4ff;
+      z-index: -1;
+   }
 
-  /* Glitch effect */
-  .glitch {
-    position: relative;
-    animation: glitch 2s infinite;
-  }
+   .glitch::after {
+      animation: glitch-2 0.5s infinite;
+      color: #ff6b6b;
+      z-index: -2;
+   }
 
-  .glitch::before,
-  .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+   @keyframes glitch {
+      0%,
+      100% {
+         transform: translate(0);
+      }
+      20% {
+         transform: translate(-2px, 2px);
+      }
+      40% {
+         transform: translate(-2px, -2px);
+      }
+      60% {
+         transform: translate(2px, 2px);
+      }
+      80% {
+         transform: translate(2px, -2px);
+      }
+   }
 
-  .glitch::before {
-    animation: glitch-1 0.5s infinite;
-    color: #00d4ff;
-    z-index: -1;
-  }
+   @keyframes glitch-1 {
+      0%,
+      100% {
+         transform: translate(0);
+      }
+      20% {
+         transform: translate(2px, -2px);
+      }
+      40% {
+         transform: translate(-2px, 2px);
+      }
+      60% {
+         transform: translate(-2px, -2px);
+      }
+      80% {
+         transform: translate(2px, 2px);
+      }
+   }
 
-  .glitch::after {
-    animation: glitch-2 0.5s infinite;
-    color: #ff6b6b;
-    z-index: -2;
-  }
+   @keyframes glitch-2 {
+      0%,
+      100% {
+         transform: translate(0);
+      }
+      20% {
+         transform: translate(-2px, -2px);
+      }
+      40% {
+         transform: translate(2px, -2px);
+      }
+      60% {
+         transform: translate(2px, 2px);
+      }
+      80% {
+         transform: translate(-2px, 2px);
+      }
+   }
 
-  @keyframes glitch {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-  }
+   /* Sección padding global */
+   .section-padding {
+      padding: 100px 0;
+   }
 
-  @keyframes glitch-1 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(2px, -2px); }
-    40% { transform: translate(-2px, 2px); }
-    60% { transform: translate(-2px, -2px); }
-    80% { transform: translate(2px, 2px); }
-  }
-
-  @keyframes glitch-2 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, -2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(-2px, 2px); }
-  }
+   /* Título de sección global */
+   .section-title {
+      position: relative;
+   }
 </style>

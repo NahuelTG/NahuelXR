@@ -1,76 +1,91 @@
 ---
 export interface Props {
-  name: string;
-  level: string;
-  icon: string;
+   name: string;
+   level: string;
+   icon: string;
 }
 
 const { name, level, icon } = Astro.props;
 ---
 
 <div class="skill-card mb-4 hover-lift">
-  <div class="flex items-center justify-between mb-2">
-    <span class="flex items-center gap-2 text-white font-medium">
-      <span class="text-xl">{icon}</span>
-      {name}
-    </span>
-    <span class="text-sm text-gray-400">{level}%</span>
-  </div>
-  
-  <div class="skill-bar bg-gray-700 rounded-full h-2 overflow-hidden">
-    <div 
-      class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-1000 ease-out"
-      style={`width: ${level}%`}
-    ></div>
-  </div>
+   <div class="flex items-center justify-between mb-2">
+      <span class="flex items-center gap-2 text-white font-medium">
+         <span class="text-xl">{icon}</span>
+         {name}
+      </span>
+      <span class="text-sm text-gray-400">{level}%</span>
+   </div>
+
+   <div class="skill-bar bg-gray-700 rounded-full h-2 overflow-hidden">
+      <div
+         class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-1000 ease-out"
+         style={`width: ${level}%`}
+      >
+      </div>
+   </div>
 </div>
 
 <style>
-  .skill-card {
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-  }
+   .skill-card {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+   }
 
-  .skill-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(0, 212, 255, 0.3);
-  }
+   .skill-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(0, 212, 255, 0.3);
+   }
 
-  .skill-progress {
-    animation: fillBar 2s ease-out 0.5s both;
-    width: 0 !important;
-  }
+   .skill-progress {
+      animation: fillBar 2s ease-out 0.5s both;
+      width: 0 !important;
+   }
 
-  @keyframes fillBar {
-    to {
-      width: var(--level) !important;
-    }
-  }
+   @keyframes fillBar {
+      to {
+         width: var(--level) !important;
+      }
+   }
 
-  .skill-card:nth-child(1) .skill-progress { animation-delay: 0.1s; }
-  .skill-card:nth-child(2) .skill-progress { animation-delay: 0.2s; }
-  .skill-card:nth-child(3) .skill-progress { animation-delay: 0.3s; }
-  .skill-card:nth-child(4) .skill-progress { animation-delay: 0.4s; }
-  .skill-card:nth-child(5) .skill-progress { animation-delay: 0.5s; }
+   .skill-card:nth-child(1) .skill-progress {
+      animation-delay: 0.1s;
+   }
+   .skill-card:nth-child(2) .skill-progress {
+      animation-delay: 0.2s;
+   }
+   .skill-card:nth-child(3) .skill-progress {
+      animation-delay: 0.3s;
+   }
+   .skill-card:nth-child(4) .skill-progress {
+      animation-delay: 0.4s;
+   }
+   .skill-card:nth-child(5) .skill-progress {
+      animation-delay: 0.5s;
+   }
 </style>
 
 <script>
-  // Animar barras cuando entren en viewport
-  const skillCards = document.querySelectorAll('.skill-card');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const progressBar = entry.target.querySelector('.skill-progress');
-        const level = entry.target.querySelector('.text-sm').textContent.replace('%', '');
-        progressBar.style.setProperty('--level', level + '%');
-        progressBar.style.width = level + '%';
-      }
-    });
-  });
+   // Animar barras cuando entren en viewport
+   const skillCards = document.querySelectorAll(".skill-card");
 
-  skillCards.forEach(card => observer.observe(card));
+   const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+         if (entry.isIntersecting) {
+            const progressBar = entry.target.querySelector(".skill-progress") as HTMLElement;
+            const levelElement = entry.target.querySelector(".text-sm") as HTMLElement;
+
+            if (progressBar && levelElement && levelElement.textContent) {
+               const level = levelElement.textContent.replace("%", "");
+               progressBar.style.setProperty("--level", level + "%");
+               progressBar.style.width = level + "%";
+            }
+         }
+      });
+   });
+
+   skillCards.forEach((card) => observer.observe(card));
 </script>
