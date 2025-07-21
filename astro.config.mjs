@@ -18,7 +18,6 @@ export default defineConfig({
 
    build: {
       assets: "_astro",
-      assetsPrefix: "/NahuelXR",
    },
 
    image: {
