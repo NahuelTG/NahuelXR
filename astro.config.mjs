@@ -6,6 +6,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
    integrations: [tailwind()],
    site: "https://NahuelTG.github.io",
+
    vite: {
       css: {
          preprocessorOptions: {
