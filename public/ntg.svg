@@ -1,10 +1,49 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="1024.000000pt" height="1536.000000pt" viewBox="0 0 1024.000000 1536.000000" preserveAspectRatio="xMidYMid meet">
-<metadata>
-Created by potrace 1.16, written by Peter Selinger 2001-2019
-<meta name="Producer" content="Online-Convert"/></metadata>
-<g transform="translate(0.000000,1536.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-<path d="M5000 11133 c-721 -26 -1433 -277 -2005 -706 -755 -568 -1228 -1404 -1346 -2382 -21 -167 -18 -615 5 -790 49 -388 146 -716 312 -1062 171 -359 370 -640 654 -923 496 -496 1121 -829 1810 -964 275 -53 363 -61 710 -61 347 1 438 8 700 61 718 143 1394 527 1888 1073 116 129 284 351 277 368 -2 7 1 12 7 10 17 -3 158 228 243 398 202 405 325 871 340 1290 3 77 8 165 10 195 2 30 0 131 -6 224 -28 527 -151 987 -383 1431 -510 979 -1501 1661 -2629 1810 -147 20 -439 34 -587 28z m1820 -3438 l0 -1735 -197 0 c-109 0 -235 -3 -279 -6 -52 -4 -101 -2 -133 6 -47 11 -60 21 -159 129 -59 64 -215 242 -347 396 -321 375 -1328 1551 -1499 1748 l-136 158 0 -1221 0 -1220 -330 0 -330 0 0 1728 0 1729 167 6 c91 4 236 7 321 7 l155 0 76 -82 c42 -46 121 -130 176 -188 55 -58 155 -172 222 -255 66 -82 210 -253 319 -380 110 -126 446 -517 747 -867 l547 -638 0 1205 0 1205 273 2 c149 2 302 4 340 5 l67 3 0 -1735z"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- Gradiente principal para la letra -->
+    <linearGradient id="letterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0099cc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente para el fondo -->
+    <radialGradient id="backgroundGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#0f0f1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Sombra suave -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fondo circular -->
+  <circle cx="50" cy="50" r="48" fill="url(#backgroundGradient)" stroke="url(#letterGradient)" stroke-width="2"/>
+  
+  <!-- Letra N optimizada -->
+  <g transform="translate(50, 50)" filter="url(#glow)">
+    <!-- Barra izquierda -->
+    <rect x="-20" y="-25" width="6" height="50" fill="url(#letterGradient)" rx="1"/>
+    
+    <!-- Barra diagonal -->
+    <path d="M -14 -25 L 8 25 L 14 22 L -8 -28 Z" fill="url(#letterGradient)"/>
+    
+    <!-- Barra derecha -->
+    <rect x="14" y="-25" width="6" height="50" fill="url(#letterGradient)" rx="1"/>
+    
+    <!-- Puntos decorativos para dar dinamismo -->
+    <circle cx="-22" cy="-30" r="1.5" fill="#00d4ff" opacity="0.8">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="22" cy="30" r="1.5" fill="#ff6b6b" opacity="0.8">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
 </svg>
