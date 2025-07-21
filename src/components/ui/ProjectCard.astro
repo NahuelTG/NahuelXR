@@ -8,6 +8,8 @@ export interface Props {
    codeUrl?: string;
    isImmersive?: boolean;
    isPersonal?: boolean;
+   isIndividual?: boolean;
+   isTeam?: boolean;
    category?: string;
    year?: string;
    event?: string;
@@ -23,6 +25,8 @@ const {
    codeUrl,
    isImmersive = false,
    isPersonal = false,
+   isIndividual = false,
+   isTeam = false,
    category,
    year,
    event,
@@ -114,7 +118,7 @@ const {
          </div>
       </div>
 
-      <div class="project-content p-6 bg-gray-800/50 backdrop-blur-sm rounded-b-xl h-[220px]">
+      <div class="project-content p-6 bg-gray-800/50 backdrop-blur-sm rounded-b-xl h-max-[250px] flex flex-col">
          <div class="project-header mb-3">
             <h4 class="project-title text-xl font-semibold mb-2 text-white">{title}</h4>
 
@@ -143,7 +147,7 @@ const {
             }
          </div>
 
-         <p class="project-description text-gray-300 mb-4 text-sm leading-relaxed">{description}</p>
+         <p class="project-description text-gray-300 mb-4 text-sm leading-relaxed flex-grow">{description}</p>
 
          <!-- Technologies -->
          <div class="technologies flex flex-wrap gap-2 mb-4">
@@ -155,7 +159,11 @@ const {
                            ? "bg-purple-600/20 text-purple-300 border-purple-600/30 hover:bg-purple-600/30"
                            : isPersonal
                              ? "bg-green-600/20 text-green-300 border-green-600/30 hover:bg-green-600/30"
-                             : "bg-blue-600/20 text-blue-300 border-blue-600/30 hover:bg-blue-600/30"
+                             : isIndividual
+                               ? "bg-orange-600/20 text-orange-300 border-orange-600/30 hover:bg-orange-600/30"
+                               : isTeam
+                                 ? "bg-secondary-600/20 text-secondary-300 border-secondary-600/30 hover:bg-secondary-600/30"
+                                 : "bg-blue-600/20 text-blue-300 border-blue-600/30 hover:bg-blue-600/30"
                      }`}
                      style={`animation-delay: ${index * 0.1}s`}
                   >
@@ -167,8 +175,8 @@ const {
 
          <!-- Project Type Indicator -->
          {
-            (isPersonal || isImmersive) && (
-               <div class="project-type-indicator flex items-center gap-2 text-xs">
+            (isPersonal || isImmersive || isTeam || isIndividual) && (
+               <div class="project-type-indicator flex items-center gap-2 text-xs mb-2">
                   {isPersonal && (
                      <span class="type-badge bg-green-600/10 text-green-400 px-2 py-1 rounded border border-green-600/20">
                         <span class="flex items-center gap-1">
@@ -182,6 +190,22 @@ const {
                         <span class="flex items-center gap-1">
                            <span>🎮</span>
                            <span>Experiencia Inmersiva</span>
+                        </span>
+                     </span>
+                  )}
+                  {isTeam && (
+                     <span class="type-badge bg-secondary-600/10 text-secondary-400 px-2 py-1 rounded border border-secondary-600/20">
+                        <span class="flex items-center gap-1">
+                           <span>👥</span>
+                           <span>Desarrollo de Equipo</span>
+                        </span>
+                     </span>
+                  )}
+                  {isIndividual && (
+                     <span class="type-badge bg-orange-600/10 text-orange-400 px-2 py-1 rounded border border-orange-600/20">
+                        <span class="flex items-center gap-1">
+                           <span>👤</span>
+                           <span>Desarrollo Individual</span>
                         </span>
                      </span>
                   )}

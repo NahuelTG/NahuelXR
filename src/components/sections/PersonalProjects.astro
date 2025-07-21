@@ -4,7 +4,7 @@ import ProjectCard from "../ui/ProjectCard.astro";
 
 <section id="proyectos-personales" class="section-padding bg-gradient-to-b from-gray-900/10 to-transparent animate-on-scroll">
    <div class="container mx-auto px-6">
-      <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">Proyectos Personales Frontend</h2>
+      <h2 class="section-title text-4xl font-bold text-center mb-16 gradient-text">Proyectos Personales</h2>
 
       <p class="text-center text-lg text-gray-300 mb-12 max-w-3xl mx-auto">
          Proyectos desarrollados por iniciativa propia para explorar nuevas tecnologías, experimentar con ideas innovadoras y contribuir a
@@ -13,34 +13,12 @@ import ProjectCard from "../ui/ProjectCard.astro";
 
       <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-container">
          <ProjectCard
-            title="SCESI Official Website"
-            description="Sitio web oficial de SCESI desarrollado con Astro y Tailwind CSS. Diseño responsivo con markup accesible y puntuaciones Lighthouse perfectas."
-            image="/placeholder.svg?height=200&width=300"
-            technologies={["Astro", "Tailwind CSS", "JavaScript", "Figma"]}
-            liveUrl="https://www.scesi.org"
-            codeUrl="#"
-            category="Institucional"
-            isPersonal={true}
-         />
-
-         <ProjectCard
-            title="FLISoL Application"
-            description="Plataforma de alto rendimiento para FLISoL priorizando tiempos de carga rápidos y capacidad de respuesta móvil durante eventos de alta asistencia."
-            image="/placeholder.svg?height=200&width=300"
-            technologies={["Astro", "JavaScript", "Responsive Design", "Performance"]}
-            liveUrl="https://flisol-app.web.app/"
-            codeUrl="#"
-            category="Evento"
-            isPersonal={true}
-         />
-
-         <ProjectCard
             title="MindAR Interactive Demo"
             description="Experiencia AR web interactiva usando React, Vite y MindAR.js. Reconoce imágenes específicas y renderiza modelos 3D en tiempo real."
-            image="/placeholder.svg?height=200&width=300"
+            image="/images/mindar.webp"
             technologies={["React", "Vite", "MindAR.js", "WebAR", "3D Models"]}
             liveUrl="https://midaar.netlify.app/"
-            codeUrl="#"
+            codeUrl="https://github.com/NahuelTG/MindAR_test"
             category="AR Web"
             isPersonal={true}
          />
@@ -48,33 +26,33 @@ import ProjectCard from "../ui/ProjectCard.astro";
          <ProjectCard
             title="Pomodoro Web App"
             description="Temporizador Pomodoro minimalista usando Astro, React, HTML y CSS. Interfaz limpia con controles intuitivos y simplicidad visual."
-            image="/placeholder.svg?height=200&width=300"
+            image="/images/pomodoro.webp"
             technologies={["Astro", "React", "HTML5", "CSS3", "Productivity"]}
             liveUrl="https://pomodorochallenge.netlify.app/"
-            codeUrl="#"
+            codeUrl="https://github.com/NahuelTG/Pomodoro_challenge"
             category="Productividad"
             isPersonal={true}
          />
 
          <ProjectCard
-            title="Portfolio Interactivo 3D"
-            description="Portafolio personal con elementos 3D inmersivos, animaciones avanzadas y experiencias interactivas usando tecnologías web modernas."
-            image="/placeholder.svg?height=200&width=300"
-            technologies={["React", "Three.js", "GSAP", "WebGL", "Shaders"]}
-            liveUrl="#"
-            codeUrl="#"
-            category="Portfolio"
+            title="CaleNotion"
+            description="Una herramienta que ayuda a la planificación de tareas que usa la API de Google Calendar"
+            image="/images/calenotion.webp"
+            technologies={["Vite", "React", "Google API", "Shadcn", "PWA"]}
+            liveUrl="https://cale-notion.vercel.app/"
+            codeUrl="https://github.com/NahuelTG/CaleNotion"
+            category="Herramientas"
             isPersonal={true}
          />
 
          <ProjectCard
-            title="Herramientas de Desarrollo"
-            description="Conjunto de utilidades y herramientas de desarrollo personal para optimizar flujo de trabajo en proyectos frontend y 3D."
-            image="/placeholder.svg?height=200&width=300"
-            technologies={["Node.js", "CLI Tools", "Automation", "DevOps"]}
-            liveUrl="#"
-            codeUrl="#"
-            category="Herramientas"
+            title="Cards Price"
+            description="Maquetación y animación responsive de cards usando solo HTML, CSS y un poco de Javascript"
+            image="/images/cards.webp"
+            technologies={["HTML", "CSS", "JS"]}
+            liveUrl="https://cards-price-scesi.netlify.app/01-price-cards-landing/"
+            codeUrl="https://github.com/NahuelTG/webcito-challenges"
+            category="Animaciones"
             isPersonal={true}
          />
       </div>
