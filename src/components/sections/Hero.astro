@@ -16,9 +16,19 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
          <span class="hidden sm:block text-4xl md:text-6xl lg:text-8xl">Nahuel Torrez Guzman</span>
       </h1>
 
-      <p class="hero-subtitle mb-8 text-gray-300">
-         <span class="block text-base sm:text-lg md:text-xl lg:text-2xl"> Desarrollador Web & Experiencias Inmersivas (AR/VR) </span>
-      </p>
+      <!-- Typewriter con estructura mejorada -->
+      <div class="hero-subtitle-container mb-8">
+         <p class="hero-subtitle text-gray-300">
+            <span class="typewriter-text" data-text="Desarrollador Web & Experiencias Inmersivas (AR/VR)">
+               <span class="block text-base sm:text-lg md:text-xl lg:text-2xl sm:hidden">
+                  Desarrollador Web &<br />Experiencias Inmersivas<br />(AR/VR)
+               </span>
+               <span class="hidden sm:block text-base sm:text-lg md:text-xl lg:text-2xl">
+                  Desarrollador Web & Experiencias Inmersivas (AR/VR)
+               </span>
+            </span>
+         </p>
+      </div>
 
       <div class="hero-description mb-8 md:mb-12 max-w-4xl mx-auto px-2">
          <p class="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed">
@@ -75,6 +85,66 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
    </div>
 </section>
 
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+      // Configurar typewriter effect
+      const typewriterElements = document.querySelectorAll(".typewriter-text");
+
+      typewriterElements.forEach((element, index) => {
+         const textData = element.getAttribute("data-text");
+         if (!textData) return;
+         const isMobile = window.innerWidth < 640;
+
+         if (isMobile) {
+            const mobileText = element.querySelector(".block.sm\\:hidden");
+            if (mobileText) {
+               startMobileTypewriter(mobileText, index);
+            }
+         } else {
+            const desktopText = element.querySelector(".hidden.sm\\:block");
+            if (desktopText) {
+               startDesktopTypewriter(desktopText, textData, index);
+            }
+         }
+      });
+
+      function startMobileTypewriter(element, index) {
+         element.style.opacity = "0";
+         element.style.animation = `fadeInUp 1s ease-out ${0.5 + index * 0.3}s forwards`;
+      }
+
+      function startDesktopTypewriter(element, fullText, index) {
+         element.innerHTML = "";
+         element.style.borderRight = "3px solid #00d4ff";
+         element.style.display = "inline-block";
+         element.style.verticalAlign = "top";
+
+         let charIndex = 0;
+         const speed = 80;
+         const delay = 1000 + index * 500;
+
+         setTimeout(() => {
+            const typeInterval = setInterval(() => {
+               if (charIndex < fullText.length) {
+                  element.innerHTML += fullText.charAt(charIndex);
+                  charIndex++;
+               } else {
+                  clearInterval(typeInterval);
+                  setTimeout(() => {
+                     element.style.borderRight = "none";
+                  }, 2000);
+               }
+            }, speed);
+         }, delay);
+      }
+
+      let resizeTimeout;
+      window.addEventListener("resize", function () {
+         clearTimeout(resizeTimeout);
+      });
+   });
+</script>
+
 <style>
    .hero-section {
       background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
@@ -93,25 +163,31 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
       hyphens: auto;
    }
 
-   /* Animación typewriter responsive */
-   .hero-subtitle {
-      overflow: hidden;
-      border-right: 3px solid #00d4ff;
-      white-space: nowrap;
-      animation:
-         typewriter 3s steps(40) 1s forwards,
-         blink 1s infinite;
-      width: 0;
-      max-width: 100%;
-      margin: 0 auto;
+   /* Container para el typewriter */
+   .hero-subtitle-container {
+      min-height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
 
-   @keyframes typewriter {
+   .hero-subtitle {
+      margin: 0;
+   }
+
+   /* Animación para móvil */
+   @keyframes fadeInUp {
+      from {
+         opacity: 0;
+         transform: translateY(20px);
+      }
       to {
-         width: 100%;
+         opacity: 1;
+         transform: translateY(0);
       }
    }
 
+   /* Animación de parpadeo para el cursor */
    @keyframes blink {
       0%,
       50% {
@@ -120,6 +196,13 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
       51%,
       100% {
          border-color: transparent;
+      }
+   }
+
+   /* Aplicar parpadeo del cursor solo en desktop */
+   @media (min-width: 640px) {
+      .typewriter-text .hidden.sm\\:block {
+         animation: blink 1s infinite;
       }
    }
 
@@ -207,7 +290,6 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
 
    /* Responsive breakpoints detallados */
 
-   /* Mobile Portrait (320px - 479px) */
    @media (max-width: 479px) {
       .hero-section {
          padding: 1rem 0;
@@ -230,6 +312,10 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
          width: 36px;
          height: 36px;
       }
+
+      .hero-subtitle-container {
+         min-height: 4rem;
+      }
    }
 
    /* Mobile Landscape (480px - 767px) */
@@ -241,6 +327,10 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
       .social-link {
          width: 42px;
          height: 42px;
+      }
+
+      .hero-subtitle-container {
+         min-height: 3.5rem;
       }
    }
 
@@ -292,13 +382,5 @@ import FloatingParticles from "../effects/FloatingParticles.astro";
    .hero-section * {
       max-width: 100%;
       box-sizing: border-box;
-   }
-
-   /* Ajuste específico para animación typewriter en móvil */
-   @media (max-width: 640px) {
-      .hero-subtitle {
-         font-size: 1rem;
-         line-height: 1.4;
-      }
    }
 </style>

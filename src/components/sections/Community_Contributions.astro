@@ -61,7 +61,7 @@ import ProjectCard from "../ui/ProjectCard.astro";
       </div>
       <h3 class="section-title text-3xl font-bold text-center mb-16 gradient-text">Comunidad y Eventos</h3>
 
-      <div class="contributions-grid grid md:grid-cols-2 lg:grid-cols-2 gap-8 stagger-container">
+      <div class="contributions-grid grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 stagger-container">
          <!-- Open Source Contributions -->
          <div class="contribution-card bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl border border-gray-700/50 hover-lift">
             <div class="contribution-header flex items-center gap-4 mb-4">
@@ -160,8 +160,8 @@ import ProjectCard from "../ui/ProjectCard.astro";
             </ul>
          </div>
 
-         <!-- Community Impact -->
-         <div class="contribution-card bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl border border-gray-700/50 hover-lift col-span-2">
+         <!-- Community Impact - Solo ocupa 2 columnas en desktop -->
+         <div class="contribution-card bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl border border-gray-700/50 hover-lift md:col-span-2">
             <div class="contribution-header flex items-center gap-4 mb-4">
                <div class="contribution-icon w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center">
                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,7 +179,7 @@ import ProjectCard from "../ui/ProjectCard.astro";
                </div>
             </div>
 
-            <ul class="contribution-list space-y-3 text-gray-300 mb-4">
+            <ul class="contribution-list space-y-3 text-gray-300 mb-6">
                <li class="flex items-start gap-2">
                   <span class="text-cyan-400 mt-1">•</span>
                   <div>
@@ -206,18 +206,97 @@ import ProjectCard from "../ui/ProjectCard.astro";
                </li>
             </ul>
 
-            <div class="stats-grid grid grid-cols-2 gap-4 text-center">
+            <!-- Stats responsivos -->
+            <div class="stats-grid grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center">
                <div class="stat-item bg-cyan-600/10 p-3 rounded-lg border border-cyan-600/20">
-                  <div class="text-2xl font-bold text-cyan-400">200+</div>
-                  <div class="text-sm text-gray-300">Asistentes FLISoL</div>
+                  <div class="text-xl md:text-2xl font-bold text-cyan-400">200+</div>
+                  <div class="text-xs md:text-sm text-gray-300">Asistentes FLISoL</div>
                </div>
                <div class="stat-item bg-cyan-600/10 p-3 rounded-lg border border-cyan-600/20">
-                  <div class="text-2xl font-bold text-cyan-400">3+</div>
-                  <div class="text-sm text-gray-300">Años en SCESI</div>
+                  <div class="text-xl md:text-2xl font-bold text-cyan-400">3+</div>
+                  <div class="text-xs md:text-sm text-gray-300">Años en SCESI</div>
+               </div>
+               <div class="stat-item bg-cyan-600/10 p-3 rounded-lg border border-cyan-600/20">
+                  <div class="text-xl md:text-2xl font-bold text-cyan-400">10+</div>
+                  <div class="text-xs md:text-sm text-gray-300">Equipos Hackathon</div>
+               </div>
+               <div class="stat-item bg-cyan-600/10 p-3 rounded-lg border border-cyan-600/20">
+                  <div class="text-xl md:text-2xl font-bold text-cyan-400">3</div>
+                  <div class="text-xs md:text-sm text-gray-300">Charlas Técnicas</div>
                </div>
             </div>
          </div>
       </div>
+
+      <style>
+         /* Estilos adicionales para mejor responsive */
+         .contributions-grid {
+            width: 100%;
+            max-width: 100%;
+         }
+
+         .contribution-card {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+         }
+
+         .contribution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.3);
+         }
+
+         .contribution-list {
+            flex-grow: 1;
+         }
+
+         .contribution-icon {
+            flex-shrink: 0;
+         }
+
+         /* Responsive adjustments */
+         @media (max-width: 767px) {
+            .contributions-grid {
+               gap: 1rem;
+            }
+
+            .contribution-card {
+               min-height: auto;
+               padding: 1.25rem;
+            }
+
+            .contribution-header {
+               flex-direction: row;
+               gap: 0.75rem;
+            }
+
+            .contribution-header h3 {
+               font-size: 1.125rem;
+            }
+
+            .stats-grid {
+               gap: 0.5rem;
+            }
+
+            .stat-item {
+               padding: 0.75rem 0.5rem;
+            }
+         }
+
+         @media (min-width: 768px) and (max-width: 1023px) {
+            .contribution-card {
+               min-height: 350px;
+            }
+         }
+
+         @media (min-width: 1024px) {
+            .contribution-card {
+               min-height: 400px;
+            }
+         }
+      </style>
    </div>
 </section>
 
